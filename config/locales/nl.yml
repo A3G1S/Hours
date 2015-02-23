@@ -156,7 +156,10 @@ nl:
       edit: aanpassen
       edit_entry: Entry bewerken
       hours: Uren
+      miles: Kilometers
       new: Nieuwe entry
+      new_hours: Nieuwe uren entry
+      new_milage: Nieuwe kilometer entry
       project: Project
       user_hours: "%{user}s uren"
       changes: wijzigingen

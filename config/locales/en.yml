@@ -97,7 +97,10 @@ en:
       edit: edit
       edit_entry: Edit Entry
       hours: Hours
+      miles: Kilometers
       new: New Entry
+      new_hours: New Hours Entry
+      new_milage: New Kilometers Entry
       project: Project
       user_hours: "%{user}'s hours"
       changes: changes
