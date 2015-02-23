@@ -25,7 +25,7 @@ feature "User registers time" do
         click_button "Create Entry"
       end
 
-      expect(page).to have_content I18n.t("entry_created")
+      expect(page).to have_content I18n.t("entry_created.hours")
     end
 
     scenario "validates that hours are integers" do
@@ -46,7 +46,7 @@ feature "User registers time" do
         click_button "Create Entry"
       end
 
-      expect(page).to have_content I18n.t("entry_created")
+      expect(page).to have_content I18n.t("entry_created.hours")
       expect(Entry.last.tags.count).to eq(2)
     end
   end

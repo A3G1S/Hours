@@ -7,7 +7,7 @@ module ApplicationHelper
 
   def nav_path(link_text, link_path, http_method=nil)
     css_class = "navigation"
-    css_class << " current" if current_page?(link_path) || (current_page?(milage_entry_path) && link_text == t("titles.projects.index"))
+    css_class << " current" if current_page?(link_path) || (current_page?(mileage_entry_path) && link_text == t("titles.projects.index"))
     content_tag :li, class: css_class do
       link_to(link_text, link_path, http_method)
     end

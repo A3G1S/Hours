@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
     @entry.user = current_user
     if @entry.save
-      redirect_to root_path, notice: t(:entry_created)
+      redirect_to root_path, notice: t("entry_created.hours")
     else
       redirect_to root_path, notice: @entry.errors.full_messages.join(" ")
     end

@@ -97,17 +97,19 @@ en:
       edit: edit
       edit_entry: Edit Entry
       hours: Hours
-      miles: Kilometers
+      mileage: Kilometers
       new: New Entry
       new_hours: New Hours Entry
-      new_milage: New Kilometers Entry
+      new_mileage: New Kilometers Entry
       project: Project
       user_hours: "%{user}'s hours"
       changes: changes
   entry_activity_html:
     one: "%{user} spent one hour doing %{category} on %{project}"
     other: "%{user} spent %{count} hours doing %{category} on %{project}"
-  entry_created: Entry successfully created
+  entry_created: 
+    hours: Hours entry successfully created
+    mileage: kilomters entry successfully created
   entry_deleted: Entry successfully deleted
   entry_failed: Something went wrong saving your entry
   entry_saved: Entry successfully saved
