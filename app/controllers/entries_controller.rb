@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
   DATE_FORMAT = "%d/%m/%Y".freeze
 
   def create
-    @entry = Entry.new(entry_params)
+    @entry = Hour.new(entry_params)
     @entry.user = current_user
     if @entry.save
       redirect_to root_path, notice: t("entry_created.hours")
@@ -15,7 +15,7 @@ class EntriesController < ApplicationController
 
   def index
     @user = User.find_by_slug(params[:user_id])
-    @entries = @user.entries.by_date.page(params[:page]).per(20)
+    @entries = @user.hours.by_date.page(params[:page]).per(20)
 
     respond_to do |format|
       format.html { @entries }
@@ -44,16 +44,16 @@ class EntriesController < ApplicationController
   private
 
   def resource
-    @entry ||= current_user.entries.find(params[:id])
+    @entry ||= current_user.hours.find(params[:id])
   end
 
   def entry_params
-    params.require(:entry)
-      .permit(:project_id, :category_id, :hours, :description, :date)
+    params.require(:hours)
+      .permit(:project_id, :category_id, :value, :description, :date)
       .merge(date: parsed_date)
   end
 
   def parsed_date
-    Date.strptime(params[:entry][:date], DATE_FORMAT)
+    Date.strptime(params[:hours][:date], DATE_FORMAT)
   end
 end

@@ -14,7 +14,7 @@ class ReportsController < ApplicationController
   private
 
   def entries
-    entries = EntryQuery.new(Entry.by_date, params[:entry_filter]).filter
+    entries = EntryQuery.new(Hour.by_date, params[:entry_filter]).filter
     if params[:format] == "csv"
       entries
     else

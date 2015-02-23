@@ -22,10 +22,10 @@ class Project < ActiveRecord::Base
   validates :name, presence: true,
                    uniqueness: { case_sensitive: false }
   validates_with ClientBillableValidator
-  has_many :entries
-  has_many :users, -> { uniq }, through: :entries
-  has_many :categories, -> { uniq }, through: :entries
-  has_many :tags, -> { uniq }, through: :entries
+  has_many :hours
+  has_many :users, -> { uniq }, through: :hours
+  has_many :categories, -> { uniq }, through: :hours
+  has_many :tags, -> { uniq }, through: :hours
   belongs_to :client, touch: true
 
   scope :by_last_updated, -> { order("projects.updated_at DESC") }
@@ -46,7 +46,7 @@ class Project < ActiveRecord::Base
   end
 
   def budget_status
-    budget - entries.sum(:hours) if budget
+    budget - hours.sum(:value) if budget
   end
 
   private

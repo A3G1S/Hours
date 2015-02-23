@@ -18,7 +18,7 @@ class Client < ActiveRecord::Base
   scope :by_last_updated, -> { order("clients.updated_at DESC") }
   has_many :projects
 
-  has_many :entries, through: :projects
+  has_many :hours, through: :projects
 
   has_attached_file :logo,
                     styles: { original: "100x100#" },
@@ -26,7 +26,7 @@ class Client < ActiveRecord::Base
                     s3_protocol: ""
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
-  has_many :entries, through: :projects
+  has_many :hours, through: :projects
 
   def logo_url
     logo.url(:original)

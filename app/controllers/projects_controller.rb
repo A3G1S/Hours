@@ -3,8 +3,8 @@ include TimeSeriesInitializer
 class ProjectsController < ApplicationController
   def index
     @projects = Project.unarchived.by_last_updated.page(params[:page]).per(7)
-    @entry = Entry.new
-    @activities = Entry.by_last_created_at.limit(30)
+    @entry = Hour.new
+    @activities = Hour.by_last_created_at.limit(30)
     @entrytype = params[:entry_type]
 
   end

@@ -19,5 +19,5 @@
         = link_to t("titles.projects.new"), new_project_path, id: "new-project-button", class: "button create"
     .activity-feed
       %ul
-        - localized_cache [cache_key_for_all(:entries), current_locale] do
+        - localized_cache [cache_key_for_all(:hours), current_locale] do
           = render partial: "entry", collection: @activities

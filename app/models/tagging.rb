@@ -11,8 +11,8 @@
 
 class Tagging < ActiveRecord::Base
   belongs_to :tag
-  belongs_to :entry
+  belongs_to :hours
 
   validates :tag, presence: true
-  validates :entry, presence: true
+  validates :hour, presence: true
 end
