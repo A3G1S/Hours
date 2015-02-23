@@ -21,5 +21,6 @@ resources :clients, only: [:show, :index, :edit, :update, :create]
 
 get "user/edit" => "users#edit", as: :edit_user
 get "account/edit" => "accounts#edit", as: :edit_account
+get "milage_entry" => "projects#index", as: :milage_entry, entry_type: "milage"
 delete "account" => "accounts#destroy", as: :destroy_account
 post "billables" => "billables#bill_entries", as: :bill_entries
