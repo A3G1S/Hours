@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  private
+    private
 
     def entrytype?
       if request.fullpath == mileage_entry_path
