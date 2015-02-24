@@ -23,7 +23,7 @@
         %td= link_to entry.project.name, entry.project
         %td= entry.category.name
         %td= link_to entry.project.client.name, entry.project.client if entry.project.client
-        %td= entry.hours
+        %td= entry.value
         %td= entry.project.billable
         %td= entry.billed
         %td.description= sanitize autolink_tags(entry.description)

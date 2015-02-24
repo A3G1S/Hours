@@ -10,12 +10,12 @@
         %th.right
       %th.right.hide-for-mobile
   %tbody
-    - @entries.each do |entry|
+    - @hours_entries.each do |entry|
       - localized_cache cache_key_for_current_user(entry) do
         %tr.info-row
           %td= l(entry.date)
           %td= link_to entry.project.name, entry.project
-          %td.center= entry.hours
+          %td.center= entry.value
           %td.hide-for-mobile
             %span.color{:style => "background-color:#{entry.category.name.pastel_color};"}
             = entry.category.name
@@ -25,6 +25,6 @@
             %td.right
               = link_to t('entries.index.edit'), edit_entry_path(entry)
               |
-              = link_to t('entries.index.delete'), entry, method: :delete, class: "destroy", data: { confirm: t(:confirm) }
+              = link_to t('entries.index.delete'), entry_path(entry) , method: :delete, class: "destroy", data: { confirm: t(:confirm) }
           %td.right= link_to t('entries.index.changes'), entry_audits_path(entry) if entry.audits.any?
-= paginate @entries
+= paginate @hours_entries

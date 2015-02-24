@@ -12,7 +12,7 @@
       %td=billable_entry_checkbox(entry)
       %td=l(entry.date)
       %td=entry.category.name
-      %td.center= entry.hours
+      %td.center= entry.value
       %td
         = link_to entry.user do
           = entry.user.full_name

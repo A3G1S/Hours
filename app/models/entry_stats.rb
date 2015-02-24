@@ -1,6 +1,6 @@
 class EntryStats
-  def initialize(entries, subject = nil)
-    @entries = entries
+  def initialize(hour_entries, subject = nil)
+    @hour_entries = hour_entries
     @subject = subject
   end
 
@@ -9,11 +9,11 @@ class EntryStats
   end
 
   def hours_for_subject
-    entries_for_subject.sum(:hours)
+    hour_entries_for_subject.sum(:value)
   end
 
   def total_hours
-    @entries.sum(:hours)
+    @hour_entries.sum(:value)
   end
 
   def hours_for_subject_collection(collection)
@@ -30,11 +30,11 @@ class EntryStats
 
   private
 
-  def entries_for_subject
+  def hour_entries_for_subject
     if @subject.instance_of?(RemainingCategory)
-      @entries.where("category_id in (?)", @subject.ids)
+      @hour_entries.where("category_id in (?)", @subject.ids)
     else
-      @entries.where("#{@subject.class.name.downcase}_id = (?)", @subject.id)
+      @hour_entries.where("#{@subject.class.name.downcase}_id = (?)", @subject.id)
     end
   end
 end

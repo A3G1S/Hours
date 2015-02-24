@@ -181,6 +181,10 @@ nl:
       category:
         new: Creeër Categorie
       create: Opslaan
+      hour:
+        create: Maak uren aan
+      mileage:
+        create: Maak kilometerstand aan
       project:
         create: Creeër Project
       update: Opslaan

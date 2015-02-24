@@ -45,13 +45,13 @@ class Hour < Entry
 
 	private
 
-	def set_tags_from_description
-		tagnames = extract_hashtags(description)
-		self.tags = tagnames.map do |tagname|
-		  Tag.where("name ILIKE ?", tagname.strip).first_or_initialize.tap do |tag|
-		    tag.name = tagname.strip
-		    tag.save!
-		  end
+		def set_tags_from_description
+			tagnames = extract_hashtags(description)
+			self.tags = tagnames.map do |tagname|
+			  Tag.where("name ILIKE ?", tagname.strip).first_or_initialize.tap do |tag|
+			    tag.name = tagname.strip
+			    tag.save!
+			  end
+			end
 		end
-	end
 end
