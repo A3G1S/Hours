@@ -168,7 +168,7 @@ nl:
     other: "%{user} heeft %{count} uren gespendeerd aan %{category} op %{project}"
   entry_created: 
     hours: Uren zijn aangemaakt
-    mileage: kilometers zijn aangemaakt
+    mileages: kilometers zijn aangemaakt
   entry_deleted: De uren zijn verwijderd
   entry_failed: Iets ging mis bij het opslaan van uw uren
   entry_saved: Uren zijn opgeslagen

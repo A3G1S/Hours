@@ -4,12 +4,20 @@ class EntriesController < ApplicationController
   DATE_FORMAT = "%d/%m/%Y".freeze
 
   def create
-    @hours_entry = Hour.new(entry_params)
-    @hours_entry.user = current_user
-    if @hours_entry.save
-      redirect_to root_path, notice: t("entry_created.hours")
+    entrytype = entrytype?
+    
+    if entrytype == "mileages"
+      @entry = Mileage.new(entry_params(entrytype))
+    elsif entrytype == "hours"
+      @entry = Hour.new(entry_params(entrytype))
+    end
+    
+    @entry.user = current_user
+    
+    if @entry.save 
+      redirect_to root_path, notice: t("entry_created.#{entrytype}")
     else
-      redirect_to root_path, notice: @hours_entry.errors.full_messages.join(" ")
+      redirect_to root_path, notice: @entry.errors.full_messages.join(" ")
     end
   end
 
@@ -47,13 +55,27 @@ class EntriesController < ApplicationController
     @hours_entry ||= current_user.hours.find(params[:id])
   end
 
-  def entry_params
-    params.require(:hour)
-      .permit(:project_id, :category_id, :value, :description, :date)
-      .merge(date: parsed_date)
+  def entry_params(entrytype)
+    if entrytype == "mileages"
+      params.require(:mileage)
+        .permit(:project_id, :value, :date)
+        .merge(date: parsed_date(:mileage))
+    elsif entrytype == "hours"
+      params.require(:hour)
+        .permit(:project_id, :category_id, :value, :description, :date)
+        .merge(date: parsed_date(:hour))
+    end
   end
 
-  def parsed_date
-    Date.strptime(params[:hour][:date], DATE_FORMAT)
+  def parsed_date (entrytype)
+    Date.strptime(params[entrytype][:date], DATE_FORMAT)
+  end
+
+  def entrytype?
+    if params.has_key?(:hour)
+      return "hours"
+    elsif params.has_key?(:mileage)
+      return "mileages"
+    end
   end
 end

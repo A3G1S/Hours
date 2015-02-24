@@ -19,7 +19,8 @@ class Client < ActiveRecord::Base
   has_many :projects
 
   has_many :hours, through: :projects
-
+  has_many :mileages, through: :projects
+  
   has_attached_file :logo,
                     styles: { original: "100x100#" },
                     default_url: "",

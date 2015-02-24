@@ -109,7 +109,7 @@ en:
     other: "%{user} spent %{count} hours doing %{category} on %{project}"
   entry_created: 
     hours: Hours entry successfully created
-    mileage: kilometers entry successfully created
+    mileages: kilometers entry successfully created
   entry_deleted: Entry successfully deleted
   entry_failed: Something went wrong saving your entry
   entry_saved: Entry successfully saved

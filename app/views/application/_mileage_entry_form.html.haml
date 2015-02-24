@@ -1,6 +1,6 @@
 .new_entry_wrapper	
   %h2= form_title
-  = simple_form_for(@hours_entry, url: entries_path) do |f|
+  = simple_form_for(@mileage_entry, url: entries_path) do |f|
     = f.error_notification
     = f.association :project, required: true, collection: Project.unarchived.by_name, label: false, placeholder: t("entries.index.project")
     = f.input :value, required: true, as: :integer, label:false, placeholder: t("entries.index.mileage")

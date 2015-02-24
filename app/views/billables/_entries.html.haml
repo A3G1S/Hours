@@ -1,17 +1,39 @@
+%h2= t("entries.index.hours")
+
 %table.entries
   %tr
     %th
-      %input{ type: "checkbox", "data-project-id" => project.id, class: "bill-project" }
+      %input{ type: "checkbox", "data-project-id" => project.id, "data-entrytype" => "hours", class: "bill-project" }
       = t("billables.table.billed")
     %th= t("billables.table.date")
     %th= t("billables.table.category")
     %th= t("billables.table.hours")
     %th= t("billables.table.user")
-  - entries.each do |entry|
+  - hours_entries.each do |entry|
     %tr.info-row
-      %td=billable_entry_checkbox(entry)
+      %td=billable_entry_checkbox(entry, "hours")
       %td=l(entry.date)
       %td=entry.category.name
+      %td.center= entry.value
+      %td
+        = link_to entry.user do
+          = entry.user.full_name
+
+%h2= t("entries.index.mileage")
+%table.entries
+  %tr
+    %th
+      %input{ type: "checkbox", "data-project-id" => project.id, "data-entrytype" => "mileage", class: "bill-project" }
+      = t("billables.table.billed")
+    %th= t("billables.table.date")
+    %th
+    %th= t("entries.index.mileage")
+    %th= t("billables.table.user")
+  - mileages_entries.each do |entry|
+    %tr.info-row
+      %td=billable_entry_checkbox(entry, "mileage")
+      %td=l(entry.date)
+      %td
       %td.center= entry.value
       %td
         = link_to entry.user do

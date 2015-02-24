@@ -23,6 +23,7 @@ class Project < ActiveRecord::Base
                    uniqueness: { case_sensitive: false }
   validates_with ClientBillableValidator
   has_many :hours
+  has_many :mileages
   has_many :users, -> { uniq }, through: :hours
   has_many :categories, -> { uniq }, through: :hours
   has_many :tags, -> { uniq }, through: :hours
