@@ -27,8 +27,6 @@ class Client < ActiveRecord::Base
                     s3_protocol: ""
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
-  has_many :hours, through: :projects
-
   def logo_url
     logo.url(:original)
   end

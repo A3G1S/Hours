@@ -19,7 +19,7 @@
         = link_to entry.user do
           = entry.user.full_name
 
-%h2= t("entries.index.mileage")
+%h2= t("entries.index.mileages")
 %table.entries
   %tr
     %th
@@ -27,7 +27,7 @@
       = t("billables.table.billed")
     %th= t("billables.table.date")
     %th
-    %th= t("entries.index.mileage")
+    %th= t("entries.index.mileages")
     %th= t("billables.table.user")
   - mileages_entries.each do |entry|
     %tr.info-row
