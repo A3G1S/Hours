@@ -23,7 +23,7 @@ class Hour < Entry
 	belongs_to :category
 	has_one :client, through: :project
 	belongs_to :user, touch: true
-	has_many :taggings, inverse_of: :value
+	has_many :taggings
 	has_many :tags, through: :taggings
 
 	validates :user, :project, :category, :date, presence: true

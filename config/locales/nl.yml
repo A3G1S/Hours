@@ -185,8 +185,10 @@ nl:
       create: Opslaan
       hour:
         create: Maak uren aan
+        update: Pas uren aan
       mileage:
         create: Maak kilometerstand aan
+        update: Pas kilometers aan
       project:
         create: Creeër Project
       update: Opslaan

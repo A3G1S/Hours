@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
     if @entry.save 
       redirect_to return_route, notice: t("entry_created.#{entrytype}")
     else
-      redirect_to return_route, notice: @entry.errors.full_messages.join(" ")
+      redirect_to return_route, notice: @entry.errors.full_messages.join(". ")
     end
   end
 
@@ -40,7 +40,7 @@ class EntriesController < ApplicationController
     if resource(entrytype).update_attributes(entry_params(entrytype))
       redirect_to user_entries_path(current_user), notice: t("entry_saved")
     else
-      render "edit", notice: t("entry_failed")
+      redirect_to edit_entry_path(:entrytype => "hours"), notice: t("entry_failed")
     end
   end
 

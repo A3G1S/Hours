@@ -123,8 +123,10 @@ en:
     submit:
       hour:
         create: Create Hours Entry
+        update: Update Hours Entry
       mileage:
         create: Create Kilometers Entry
+        update: Update Kilometers Entry
       project:
         update: Update Project
   info:
