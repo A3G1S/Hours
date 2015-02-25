@@ -23,8 +23,8 @@
             = sanitize autolink_tags(entry.description)
           - if @user == current_user
             %td.right
-              = link_to t('entries.index.edit'), edit_entry_path(entry)
+              = link_to t('entries.index.edit'), edit_entry_path(entry, :entrytype => "hours")
               |
-              = link_to t('entries.index.delete'), entry_path(entry) , method: :delete, class: "destroy", data: { confirm: t(:confirm) }
-          %td.right= link_to t('entries.index.changes'), entry_audits_path(entry) if entry.audits.any?
+              = link_to t('entries.index.delete'), entry_path(entry, :entrytype => "hours") , method: :delete, class: "destroy", data: { confirm: t(:confirm) }
+          %td.right= link_to t('entries.index.changes'), entry_audits_path(entry, :entrytype => "hours") if entry.audits.any?
 = paginate @hours_entries

@@ -15,6 +15,7 @@ en:
     budget: "Budget:"
     category: "Category:"
     hours: "Hours:"
+    mileages: "Kilometers"
     from: from
     to: to
     actions:
@@ -95,9 +96,10 @@ en:
       delete: delete
       description: 'Description or #hashtags'
       edit: edit
-      edit_entry: Edit Entry
+      edit_hours_entry: Edit Hours Entry
+      edit_mileages_entry: Edit Kilometers Entry
       hours: Hours
-      mileage: Kilometers
+      mileages: Kilometers
       new: New Entry
       new_hours: New Hours Entry
       new_mileage: New Kilometers Entry
@@ -109,7 +111,7 @@ en:
     other: "%{user} spent %{count} hours doing %{category} on %{project}"
   entry_created: 
     hours: Hours entry successfully created
-    mileages: kilometers entry successfully created
+    mileages: Kilometers entry successfully created
   entry_deleted: Entry successfully deleted
   entry_failed: Something went wrong saving your entry
   entry_saved: Entry successfully saved

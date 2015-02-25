@@ -3,9 +3,11 @@
     .projects-overview
       - localized_cache [cache_keys_for_all(:projects, :categories, :tags), current_locale] do
         - if @entrytype
-          = render partial: "application/mileage_entry_form", locals: { form_title: t("entries.index.new_mileage") } 
+          = render partial: "application/mileages_entry_form", locals: { form_title: t("entries.index.new_mileage") } 
+          = link_to t("entries.index.new_hours"), :subdomain_root
         - else
           = render partial: "application/hours_entry_form", locals: { form_title: t("entries.index.new_hours") }
+          = link_to t("entries.index.new_mileage"), mileage_entry_path
       %ul.project-list
         - localized_cache cache_keys_for_all(:projects, :categories) do
           - unless Project.any?

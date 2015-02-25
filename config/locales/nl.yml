@@ -15,6 +15,7 @@ nl:
     budget: "Budget:"
     category: "Categorie:"
     hours: "Hours:"
+    mileages: "Kilometers"
     from: van
     to: naar
     actions:
@@ -154,12 +155,13 @@ nl:
       delete: verwijderen
       description: 'Beschrijving of #hashtags'
       edit: aanpassen
-      edit_entry: Entry bewerken
+      edit_hours_entry: Uren entry bewerken
+      edit_mileages_entry: Kilometers entry bewerken
       hours: Uren
       mileage: Kilometers
       new: Nieuwe entry
       new_hours: Nieuwe uren entry
-      new_mileage: Nieuwe kilometer entry
+      new_mileages: Nieuwe kilometer entry
       project: Project
       user_hours: "%{user}s uren"
       changes: wijzigingen
@@ -168,7 +170,7 @@ nl:
     other: "%{user} heeft %{count} uren gespendeerd aan %{category} op %{project}"
   entry_created: 
     hours: Uren zijn aangemaakt
-    mileages: kilometers zijn aangemaakt
+    mileages: Kilometers zijn aangemaakt
   entry_deleted: De uren zijn verwijderd
   entry_failed: Iets ging mis bij het opslaan van uw uren
   entry_saved: Uren zijn opgeslagen

@@ -9,7 +9,11 @@ class AuditsController < ApplicationController
 
   def audit_log
     if params.key?(:entry_id)
-      return Hour.find(params[:entry_id]).audits
+      if params[:entrytype] == "hours" 
+        return Hour.find(params[:entry_id]).audits
+      elsif params[:entrytype] == "mileages" 
+        return Mileage.find(params[:entry_id]).audits
+      end        
     end
 
     if params.key?(:project_id)

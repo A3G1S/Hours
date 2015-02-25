@@ -10,7 +10,6 @@ class BillablesController < ApplicationController
       params[:entries_to_bill].each do |value|
         entry_type = value.split("-")[0]
         entry_id = value.split("-")[1]
-
         if entry_type == "hours"
           entry = Hour.find(entry_id)
         else 

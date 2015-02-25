@@ -1,4 +1,7 @@
 .outer
   .wrapper
     .projects-overview
-      = render partial: "application/hours_entry_form", locals: { form_title: t("entries.index.edit_entry") }
+      - if @entrytype == "hours"
+        = render partial: "application/hours_entry_form", locals: { form_title: t("entries.index.edit_hours_entry") }
+      - elsif @entrytype == "mileages"
+        = render partial: "application/mileages_entry_form", locals: { form_title: t("entries.index.edit_mileages_entry") }

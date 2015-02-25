@@ -1,6 +1,6 @@
 .new_entry_wrapper
   %h2= form_title
-  = simple_form_for(@hours_entry, url: entries_path) do |f|
+  = simple_form_for(@hours_entry, url: @entry_path) do |f|
     = f.error_notification
     = f.association :project, required: true, collection: Project.unarchived.by_name, label: false, placeholder: t("entries.index.project")
     = f.association :category, required: true, collection: Category.by_name, label: false, placeholder: t("entries.index.category")
@@ -10,5 +10,3 @@
       = f.input :description, input_html: { data: { data: Tag.list }, autocomplete: :off }, label: false, autocomplete: "off", placeholder: t("entries.index.description")
       %span.background-highlighter
     = f.button :submit, data: { disable_with: t("loader.saving") }
-      
-  = link_to t("entries.index.new_mileage"), mileage_entry_path

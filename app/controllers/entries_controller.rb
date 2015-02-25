@@ -8,23 +8,26 @@ class EntriesController < ApplicationController
     
     if entrytype == "mileages"
       @entry = Mileage.new(entry_params(entrytype))
+      return_route = mileage_entry_path
     elsif entrytype == "hours"
       @entry = Hour.new(entry_params(entrytype))
+      return_route = root_path
     end
     
     @entry.user = current_user
     
     if @entry.save 
-      redirect_to root_path, notice: t("entry_created.#{entrytype}")
+      redirect_to return_route, notice: t("entry_created.#{entrytype}")
     else
-      redirect_to root_path, notice: @entry.errors.full_messages.join(" ")
+      redirect_to return_route, notice: @entry.errors.full_messages.join(" ")
     end
   end
 
   def index
     @user = User.find_by_slug(params[:user_id])
     @hours_entries = @user.hours.by_date.page(params[:page]).per(20)
-
+    @mileages_entries = @user.mileages.by_date.page(params[:page]).per(20)
+    
     respond_to do |format|
       format.html { @hours_entries }
       format.csv { send_csv(name: @user.name, entries: @hours_entries) }
@@ -32,7 +35,9 @@ class EntriesController < ApplicationController
   end
 
   def update
-    if resource.update_attributes(entry_params)
+    entrytype = entrytype?
+
+    if resource(entrytype).update_attributes(entry_params(entrytype))
       redirect_to user_entries_path(current_user), notice: t("entry_saved")
     else
       render "edit", notice: t("entry_failed")
@@ -40,19 +45,25 @@ class EntriesController < ApplicationController
   end
 
   def edit
-    resource
+    @entry_path = entry_path
+    @entrytype = params[:entrytype]
+    resource(@entrytype)
   end
 
 
   def destroy
-    resource.destroy
+    resource(params[:entrytype]).destroy
     redirect_to user_entries_path(current_user), notice: t('entry_deleted')
   end
 
   private
 
-  def resource
-    @hours_entry ||= current_user.hours.find(params[:id])
+  def resource(entrytype)
+    if entrytype == "hours"
+      @hours_entry ||= current_user.hours.find(params[:id])
+    elsif entrytype == "mileages"
+      @mileages_entry ||= current_user.mileages.find(params[:id])
+    end
   end
 
   def entry_params(entrytype)
